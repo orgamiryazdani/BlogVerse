@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :lang(en) {
+        font-family: var(--font-figtree);
+    }
+}
+
+* {
+    border: none;
+    outline: none;
+}
