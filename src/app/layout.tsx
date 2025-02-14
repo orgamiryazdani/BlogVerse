@@ -1,11 +1,24 @@
-import StoreProvider from '@/providers/StoreProvider'
 import './globals.css'
+import { Header } from './_components/header'
+import { Figtree } from 'next/font/google'
+import NextTopLoader from 'nextjs-toploader'
+
+const figtree = Figtree({
+    display: 'swap',
+    subsets: ['latin'],
+    weight: ['300', '400', '500', '600', '700', '800', '900'],
+    variable: '--font-figtree',
+})
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
-        <html lang="en">
-            <body>
-                <StoreProvider>{children}</StoreProvider>
+        <html lang="en" className={figtree.variable}>
+            <body className="bg-gray-800 text-white w-screen h-screen flex flex-col items-center justify-center">
+                <NextTopLoader showSpinner={false} color="#10b981" />
+                {/* <StoreProvider> */}
+                <Header />
+                <div className="w-[77%] min-h-[90vh]">{children}</div>
+                {/* </StoreProvider> */}
             </body>
         </html>
     )
