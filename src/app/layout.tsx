@@ -2,6 +2,8 @@ import './globals.css'
 import { Header } from './_components/header'
 import { Figtree } from 'next/font/google'
 import NextTopLoader from 'nextjs-toploader'
+import { Toaster } from 'react-hot-toast'
+import AuthProvider from '@/providers/auth-provider'
 
 const figtree = Figtree({
     display: 'swap',
@@ -15,10 +17,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <html lang="en" className={figtree.variable}>
             <body className="bg-gray-800 text-white w-screen h-screen flex flex-col items-center justify-center">
                 <NextTopLoader showSpinner={false} color="#10b981" />
-                {/* <StoreProvider> */}
-                <Header />
-                <div className="w-[77%] min-h-[90vh]">{children}</div>
-                {/* </StoreProvider> */}
+                <AuthProvider>
+                    <Header />
+                    <Toaster />
+                    <div className="w-[77%] min-h-[90vh]">{children}</div>
+                </AuthProvider>
             </body>
         </html>
     )
