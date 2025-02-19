@@ -7,14 +7,9 @@ export const Header: React.FC = () => {
                 <Link href="/" className="text-2xl font-bold">
                     BlogVerse
                 </Link>
-                <div className="space-x-6">
-                    <Link href="/login" className="font-semibold">
-                        Log in
-                    </Link>
-                    <Link href="/signup">
-                        <button className="w-20 h-9 rounded-sm bg-emerald-500 font-semibold">Sign up</button>
-                    </Link>
-                </div>
+                <Link href="/login">
+                    <button className="w-20 h-9 rounded-sm bg-emerald-500 font-semibold">Log in</button>
+                </Link>
             </div>
         </header>
     )
