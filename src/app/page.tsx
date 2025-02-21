@@ -1,3 +1,9 @@
+import { EntitySelector } from './_components/entity-selector'
+
 export default function Home() {
-    return <div></div>
+    return (
+        <div>
+            <EntitySelector />
+        </div>
+    )
 }
