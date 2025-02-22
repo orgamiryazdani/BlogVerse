@@ -6,8 +6,8 @@ import Link from 'next/link'
 export const Header: React.FC = () => {
     const { data } = useSession()
     return (
-        <header className="w-full h-[10vh] bg-gray-800 text-white flex items-center justify-center">
-            <div className="md:w-[77%] w-full px-3 md:px-0 flex items-center justify-between">
+        <header className="w-full min-h-[10vh] bg-gray-800 text-white flex items-center justify-center">
+            <div className="md:w-[83%] w-full px-3 md:px-0 flex items-center justify-between">
                 <Link href="/" className="text-2xl font-bold">
                     BlogVerse
                 </Link>
