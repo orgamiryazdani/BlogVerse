@@ -19,11 +19,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <body className="bg-gray-800 text-white w-screen h-screen flex flex-col items-center justify-center">
                 <NextTopLoader showSpinner={false} color="#10b981" />
                 <AuthProvider>
-                    <Header />
-                    <Toaster />
-                    <div className="md:w-[77%] w-full min-h-[90vh]">
-                        <TabsNavigation />
-                        {children}
+                    <div className="w-full h-full overflow-y-auto flex items-center justify-center flex-col">
+                        <Header />
+                        <Toaster />
+                        <div className="md:w-[83%] w-full min-h-[90vh]">
+                            <TabsNavigation />
+                            {children}
+                        </div>
                     </div>
                 </AuthProvider>
             </body>
