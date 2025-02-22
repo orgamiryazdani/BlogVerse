@@ -14,13 +14,13 @@ export const TabsNavigation: React.FC = () => {
     const pathname = usePathname()
 
     return (
-        <div className="flex w-fit rounded-md h-10 mt-2 overflow-hidden">
+        <div className="flex w-fit rounded-md h-10 md:mt-2 overflow-hidden ml-3 md:ml-0">
             {menuItems.map(({ id, name, to }) => {
                 const isActive = pathname === to
                 return (
                     <Link
                         key={id}
-                        className={`border-gray-500 last:border-0 h-full font-bold flex items-center justify-center border-r px-5
+                        className={`border-gray-500 last:border-0 h-full text-sm md:text-base font-bold flex items-center justify-center border-r md:px-5 px-3
                             ${isActive ? 'bg-emerald-500 text-gray-800' : 'bg-gray-400/25'}`}
                         href={to}
                     >

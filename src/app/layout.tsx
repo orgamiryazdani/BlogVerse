@@ -21,7 +21,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <AuthProvider>
                     <Header />
                     <Toaster />
-                    <div className="w-[77%] min-h-[90vh]">
+                    <div className="md:w-[77%] w-full min-h-[90vh]">
                         <TabsNavigation />
                         {children}
                     </div>
