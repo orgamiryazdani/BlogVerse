@@ -4,6 +4,7 @@ import { Figtree } from 'next/font/google'
 import NextTopLoader from 'nextjs-toploader'
 import { Toaster } from 'react-hot-toast'
 import AuthProvider from '@/providers/auth-provider'
+import { TabsNavigation } from './_components/tabs-navigation'
 
 const figtree = Figtree({
     display: 'swap',
@@ -20,7 +21,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <AuthProvider>
                     <Header />
                     <Toaster />
-                    <div className="w-[77%] min-h-[90vh]">{children}</div>
+                    <div className="w-[77%] min-h-[90vh]">
+                        <TabsNavigation />
+                        {children}
+                    </div>
                 </AuthProvider>
             </body>
         </html>
