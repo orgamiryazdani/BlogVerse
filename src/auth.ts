@@ -73,7 +73,6 @@ export const {
             return token
         },
         async session({ session, token }) {
-            console.log(token, session)
             Object.assign(session.user, token.user ?? {})
             return session
         },
