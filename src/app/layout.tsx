@@ -5,6 +5,7 @@ import NextTopLoader from 'nextjs-toploader'
 import { Toaster } from 'react-hot-toast'
 import AuthProvider from '@/providers/auth-provider'
 import { TabsNavigation } from './_components/tabs-navigation'
+import QueryProvider from '@/providers/react-query-provider'
 
 const figtree = Figtree({
     display: 'swap',
@@ -19,14 +20,16 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <body className="bg-gray-800 text-white w-screen h-screen flex flex-col items-center justify-center">
                 <NextTopLoader showSpinner={false} color="#10b981" />
                 <AuthProvider>
-                    <div className="w-full h-full overflow-y-auto flex items-center justify-center flex-col">
-                        <Header />
-                        <Toaster />
-                        <div className="md:w-[83%] w-full min-h-[90vh]">
-                            <TabsNavigation />
-                            {children}
+                    <QueryProvider>
+                        <div className="w-full h-full overflow-y-auto flex items-center justify-center flex-col">
+                            <Header />
+                            <Toaster />
+                            <div className="md:w-[83%] w-full min-h-[90vh]">
+                                <TabsNavigation />
+                                {children}
+                            </div>
                         </div>
-                    </div>
+                    </QueryProvider>
                 </AuthProvider>
             </body>
         </html>
