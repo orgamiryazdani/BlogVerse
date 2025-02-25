@@ -1,13 +1,14 @@
 'use client'
 import { Input } from '../input'
 import { useDebouncedCallback } from 'use-debounce'
-import useQueryParam from '@/hooks/useQueryParam'
+import useQueryParam from '@/hooks/use-query-param'
 
 const Search: React.FC = () => {
     const { addQueryParam, searchParams } = useQueryParam()
 
     const searchHandler = useDebouncedCallback((value: string) => {
         addQueryParam('search', value)
+        addQueryParam('skip', '0')
     }, 600)
 
     return (
