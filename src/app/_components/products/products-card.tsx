@@ -3,7 +3,7 @@ import { ProductCardProps } from './product.type'
 
 const ProductsCard: React.FC<ProductCardProps> = ({ thumbnail, title, description }) => {
     return (
-        <div className="md:w-[365px] w-full h-fit cursor-pointer bg-gray-700/40 rounded-md">
+        <div className="h-fit cursor-pointer bg-gray-700/40 rounded-md grow basis-[365px]">
             <div className="w-full h-auto flex items-center justify-center">
                 <Image width={200} height={200} src={thumbnail} alt={title} loading="lazy" />
             </div>

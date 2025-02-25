@@ -10,7 +10,7 @@ export const ProductsPlaceholder: React.FC = () => {
             {items.map((item) => (
                 <div
                     key={item}
-                    className="md:w-[365px] w-full h-[333px] p-3 space-y-3 bg-gray-700/40 rounded-md"
+                    className="grow basis-[365px] h-[333px] p-3 space-y-3 bg-gray-700/40 rounded-md"
                 >
                     <div className="w-full h-2/4 bg-gray-500/20 rounded-md"></div>
                     <div className="flex flex-col gap-y-3 h-2/4 pb-3">

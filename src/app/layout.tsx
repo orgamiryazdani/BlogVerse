@@ -24,7 +24,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                         <div className="w-full h-full overflow-y-auto flex items-center justify-center flex-col">
                             <Header />
                             <Toaster />
-                            <div className="md:w-[83%] w-full min-h-[90vh]">
+                            <div className="lg:w-[88%] md:w-[95%] w-full min-h-[90vh] max-w-[1700px]">
                                 <TabsNavigation />
                                 {children}
                             </div>

@@ -9,33 +9,13 @@ export const Pagination: React.FC<{ totalPage: number }> = ({ totalPage }) => {
     const pageCount = Math.floor(totalPage / 10)
 
     const getPageNumbers = (): PageType[] => {
-        if (pageCount <= 9) return [...Array(pageCount)].map((_, i) => i + 1)
-        if (currentPage <= 4) {
-            return [1, 2, 3, 4, 5, 6, '...', pageCount - 1, pageCount]
-        } else if (currentPage >= pageCount - 3) {
-            return [
-                1,
-                2,
-                '...',
-                pageCount - 5,
-                pageCount - 4,
-                pageCount - 3,
-                pageCount - 2,
-                pageCount - 1,
-                pageCount,
-            ]
+        if (pageCount <= 3) return [...Array(pageCount)].map((_, i) => i + 1)
+        if (currentPage <= 2) {
+            return [1, 2, 3, '...', pageCount - 1, pageCount]
+        } else if (currentPage >= pageCount - 1) {
+            return [1, 2, '...', pageCount - 2, pageCount - 1, pageCount]
         } else {
-            return [
-                1,
-                2,
-                '...',
-                currentPage - 1,
-                currentPage,
-                currentPage + 1,
-                '...',
-                pageCount - 1,
-                pageCount,
-            ]
+            return [1, '...', currentPage, '...', pageCount - 1, pageCount]
         }
     }
 
@@ -51,7 +31,7 @@ export const Pagination: React.FC<{ totalPage: number }> = ({ totalPage }) => {
                 <button
                     onClick={() => handlePageChange(currentPage - 1)}
                     disabled={currentPage === 1}
-                    className={`${currentPage === 1 ? 'cursor-not-allowed text-slate-500' : 'cursor-pointer'} h-12 px-4 hover:bg-emerald-600/35 flex items-center justify-center`}
+                    className={`${currentPage === 1 ? 'cursor-not-allowed text-slate-500' : 'cursor-pointer'} h-12 md:px-4 px-2 hover:bg-emerald-600/35 flex items-center justify-center`}
                 >
                     <IoIosArrowBack />
                 </button>
@@ -72,7 +52,7 @@ export const Pagination: React.FC<{ totalPage: number }> = ({ totalPage }) => {
                 <button
                     onClick={() => handlePageChange(currentPage + 1)}
                     disabled={currentPage === pageCount}
-                    className={`${currentPage === pageCount ? 'cursor-not-allowed text-slate-500' : 'cursor-pointer'} h-12 px-4 border-l border-emerald-500 hover:bg-emerald-600/35 flex items-center justify-center`}
+                    className={`${currentPage === pageCount ? 'cursor-not-allowed text-slate-500' : 'cursor-pointer'} h-12 md:px-4 px-2 border-l border-emerald-500 hover:bg-emerald-600/35 flex items-center justify-center`}
                 >
                     <IoIosArrowForward />
                 </button>
