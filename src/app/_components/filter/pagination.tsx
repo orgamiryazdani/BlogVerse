@@ -31,7 +31,7 @@ export const Pagination: React.FC<{ totalPage: number }> = ({ totalPage }) => {
                 <button
                     onClick={() => handlePageChange(currentPage - 1)}
                     disabled={currentPage === 1}
-                    className={`${currentPage === 1 ? 'cursor-not-allowed text-slate-500' : 'cursor-pointer'} h-12 md:px-4 px-2 hover:bg-emerald-600/35 flex items-center justify-center`}
+                    className={`${currentPage === 1 ? 'cursor-not-allowed text-slate-500' : 'cursor-pointer'} h-12 md:px-4 px-[10px] hover:bg-emerald-600/35 flex items-center justify-center`}
                 >
                     <IoIosArrowBack />
                 </button>
@@ -52,7 +52,7 @@ export const Pagination: React.FC<{ totalPage: number }> = ({ totalPage }) => {
                 <button
                     onClick={() => handlePageChange(currentPage + 1)}
                     disabled={currentPage === pageCount}
-                    className={`${currentPage === pageCount ? 'cursor-not-allowed text-slate-500' : 'cursor-pointer'} h-12 md:px-4 px-2 border-l border-emerald-500 hover:bg-emerald-600/35 flex items-center justify-center`}
+                    className={`${currentPage === pageCount ? 'cursor-not-allowed text-slate-500' : 'cursor-pointer'} h-12 md:px-4 px-[10px] border-l border-emerald-500 hover:bg-emerald-600/35 flex items-center justify-center`}
                 >
                     <IoIosArrowForward />
                 </button>
