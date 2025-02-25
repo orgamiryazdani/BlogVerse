@@ -7,7 +7,7 @@ const useQueryParam = () => {
 
     const addQueryParam = (key: string, value: string) => {
         searchParams.set(key, value.trim())
-        router.push(`${pathname}?${searchParams.toString()}`, { scroll: false })
+        router.push(`${pathname}?${searchParams.toString()}`)
     }
 
     return { addQueryParam, searchParams }
