@@ -5,8 +5,8 @@ type PageType = number | '...'
 
 export const Pagination: React.FC<{ totalPage: number }> = ({ totalPage }) => {
     const { addQueryParam, searchParams } = useQueryParam()
-    const currentPage = Number(searchParams.get('skip')) / 10 || 1
-    const pageCount = Math.floor(totalPage / 10)
+    const currentPage = (Number(searchParams.get('skip')) / 10 || 0) + 1
+    const pageCount = Math.ceil(totalPage / 10)
 
     const getPageNumbers = (): PageType[] => {
         if (pageCount <= 3) return [...Array(pageCount)].map((_, i) => i + 1)
@@ -21,7 +21,7 @@ export const Pagination: React.FC<{ totalPage: number }> = ({ totalPage }) => {
 
     const handlePageChange = (page: PageType): void => {
         if (typeof page === 'number' && page >= 1 && page <= pageCount) {
-            addQueryParam('skip', String(page * 10))
+            addQueryParam('skip', String((page - 1) * 10))
         }
     }
 
