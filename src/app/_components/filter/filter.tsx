@@ -15,7 +15,7 @@ export const Filter: React.FC = () => {
             {showFilter && (
                 <div
                     onClick={() => setShowFilter(false)}
-                    className="fixed w-full h-full md:hidden left-0 top-0 bg-gray-700/40"
+                    className="fixed w-full h-full md:hidden left-0 top-0 bg-gray-700/25"
                 ></div>
             )}
             <div
