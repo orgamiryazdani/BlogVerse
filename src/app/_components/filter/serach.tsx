@@ -13,7 +13,6 @@ const Search: React.FC = () => {
 
     return (
         <Input
-            autoFocus
             defaultValue={searchParams.get('search') || ''}
             onChange={(e) => searchHandler(e.target.value)}
             placeholder="search..."
