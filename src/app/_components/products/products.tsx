@@ -9,7 +9,9 @@ export const Products: React.FC = () => {
     const searchParams = useSearchParams()
     const search = searchParams.get('search') || ''
     const skip = Number(searchParams.get('skip')) || 0
-    const { data, isLoading } = useGetProducts({ search, skip })
+    const sortBy = searchParams.get('sortBy') || ''
+    const order = searchParams.get('order') || ''
+    const { data, isLoading } = useGetProducts({ search, skip, sortBy, order })
 
     if (isLoading) return <ProductsPlaceholder />
 
