@@ -15,4 +15,5 @@ export type ProductsQueryValue = {
     skip: number
     sortBy: string
     order: string
+    category: string
 }
