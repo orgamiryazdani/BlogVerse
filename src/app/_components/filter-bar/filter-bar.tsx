@@ -2,8 +2,9 @@ import { useState } from 'react'
 import Search from './serach'
 import { GiSettingsKnobs } from 'react-icons/gi'
 import { Sort } from './sort'
+import { Filter } from './filter'
 
-export const Filter: React.FC = () => {
+export const FilterBar: React.FC = () => {
     const [showFilter, setShowFilter] = useState(false)
     return (
         <>
@@ -20,9 +21,10 @@ export const Filter: React.FC = () => {
                 ></div>
             )}
             <div
-                className={`md:w-[30%] w-full md:h-[490px] ${showFilter ? 'h-[75%] pt-[5px]' : 'h-0'} transition-all duration-300 ease-in-out fixed left-0 right-0 bottom-0 md:rounded-md rounded-t-lg md:bg-gray-700/50 bg-gray-700 md:mt-5 px-[7px] md:pt-[5px] md:sticky md:top-4`}
+                className={`md:w-[30%] w-full md:h-[490px] ${showFilter ? 'h-auto pt-[5px] pb-2' : 'h-0'} fixed left-0 right-0 bottom-0 md:rounded-md rounded-t-lg md:bg-gray-700/50 bg-gray-700 md:mt-5 px-[7px] md:pt-[5px] md:sticky md:top-4`}
             >
                 <Search />
+                <Filter />
                 <Sort />
             </div>
         </>
