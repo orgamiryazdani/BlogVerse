@@ -1,7 +1,7 @@
 import { useGetProductsCategoryList } from '@/hooks/use-products'
 import useQueryParam from '@/hooks/use-query-param'
 import { CategoryPlaceholder } from '../placeholders/category'
-import { RemoveFilter } from './clear-filter-sort'
+import { ClearFilterSort } from './clear-filter-sort'
 
 export const Filter: React.FC = () => {
     const { data, isLoading } = useGetProductsCategoryList()
@@ -27,7 +27,7 @@ export const Filter: React.FC = () => {
                         className={`md:bg-gray-700 bg-gray-600 px-4 py-3 relative rounded-md cursor-pointer ${selectedValue === item ? 'border border-emerald-500' : ''}`}
                     >
                         {item}
-                        <RemoveFilter
+                        <ClearFilterSort
                             selected={selectedValue}
                             value={item}
                             sortHandler={() => filterHandler('')}

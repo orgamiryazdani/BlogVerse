@@ -1,6 +1,6 @@
 import { IoCloseCircle } from 'react-icons/io5'
 
-export const RemoveFilter: React.FC<{
+export const ClearFilterSort: React.FC<{
     selected: string
     value: string
     sortHandler: (key: string, value?: string) => void

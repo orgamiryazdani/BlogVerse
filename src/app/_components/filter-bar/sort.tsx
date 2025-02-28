@@ -1,6 +1,6 @@
 import useQueryParam from '@/hooks/use-query-param'
-import { RemoveFilter } from './clear-filter-sort'
 import { orderOptions, sortOptions } from '@/data/sort'
+import { ClearFilterSort } from './clear-filter-sort'
 
 export const Sort: React.FC = () => {
     const { addQueryParam, searchParams } = useQueryParam()
@@ -23,7 +23,7 @@ export const Sort: React.FC = () => {
                         className={`px-4 py-3 rounded-md relative md:bg-gray-700 bg-gray-600 cursor-pointer ${sortSelected === value ? 'border border-emerald-500' : ''}`}
                     >
                         {label}
-                        <RemoveFilter
+                        <ClearFilterSort
                             selected={sortSelected}
                             value={value}
                             sortHandler={() => sortHandler('sortBy', '')}
@@ -40,7 +40,7 @@ export const Sort: React.FC = () => {
                         className={`w-1/2 h-11 md:bg-gray-700 bg-gray-600 relative cursor-pointer rounded-md flex items-center justify-center text-lg font-bold ${orderSelected === value ? 'border border-emerald-500' : ''}`}
                     >
                         {label}
-                        <RemoveFilter
+                        <ClearFilterSort
                             selected={orderSelected}
                             value={value}
                             sortHandler={() => sortHandler('order', '')}
