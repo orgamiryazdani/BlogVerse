@@ -1,17 +1,7 @@
 import { readData } from '@/core/http-service'
-import { Products } from '@/types/products.interface'
+import { Products, ProductsQueryValue } from '@/types/products.interface'
 
-export const getProductsApi = async ({
-    search,
-    skip,
-    sortBy,
-    order,
-}: {
-    search: string
-    skip: number
-    sortBy: string
-    order: string
-}) => {
+export const getProductsApi = async ({ search, skip, sortBy, order }: ProductsQueryValue) => {
     return await readData<Products>(
         `/products/search?q=${search}&limit=10&skip=${skip}&sortBy=${sortBy}&order=${order}`
     )

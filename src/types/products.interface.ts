@@ -9,3 +9,10 @@ export interface Products {
     skip: number
     total: number
 }
+
+export type ProductsQueryValue = {
+    search: string
+    skip: number
+    sortBy: string
+    order: string
+}
