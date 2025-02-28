@@ -11,7 +11,9 @@ export const Products: React.FC = () => {
     const skip = Number(searchParams.get('skip')) || 0
     const sortBy = searchParams.get('sortBy') || ''
     const order = searchParams.get('order') || ''
-    const { data, isLoading } = useGetProducts({ search, skip, sortBy, order })
+    const category = searchParams.get('category') || ''
+
+    const { data, isLoading } = useGetProducts({ search, skip, sortBy, order, category })
 
     if (isLoading) return <ProductsPlaceholder />
 
