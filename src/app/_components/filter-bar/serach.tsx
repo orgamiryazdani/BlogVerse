@@ -9,6 +9,7 @@ const Search: React.FC = () => {
     const searchHandler = useDebouncedCallback((value: string) => {
         addQueryParam('search', value)
         addQueryParam('skip', '0')
+        addQueryParam('category', '')
     }, 600)
 
     return (
