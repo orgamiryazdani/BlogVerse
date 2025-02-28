@@ -3,7 +3,7 @@ import { useGetProducts } from '@/hooks/use-products'
 import { ProductsPlaceholder } from '../placeholders/products'
 import ProductsCard from './products-card'
 import { useSearchParams } from 'next/navigation'
-import { Pagination } from '../filter/pagination'
+import { Pagination } from '../filter-bar/pagination'
 
 export const Products: React.FC = () => {
     const searchParams = useSearchParams()

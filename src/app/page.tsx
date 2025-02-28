@@ -1,6 +1,6 @@
 'use client'
 import { Suspense } from 'react'
-import { Filter } from './_components/filter'
+import { Filter } from './_components/filter-bar'
 import { Products } from './_components/products'
 import { Loading } from './_components/loading'
 
