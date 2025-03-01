@@ -21,15 +21,30 @@ export const Products: React.FC = () => {
         <div className="md:w-[70%] w-full px-3 md:px-0 my-5 flex flex-wrap justify-between gap-5">
             {data !== undefined && data.products.length > 0 ? (
                 <>
-                    {data?.products.map(({ id, title, thumbnail, description }) => (
-                        <ProductsCard
-                            key={id}
-                            id={id}
-                            title={title}
-                            thumbnail={thumbnail}
-                            description={description}
-                        />
-                    ))}
+                    {data?.products.map(
+                        ({
+                            id,
+                            title,
+                            thumbnail,
+                            description,
+                            discountPercentage,
+                            price,
+                            rating,
+                            reviews,
+                        }) => (
+                            <ProductsCard
+                                key={id}
+                                id={id}
+                                discountPercentage={discountPercentage}
+                                title={title}
+                                price={price}
+                                rating={rating}
+                                reviews={reviews}
+                                thumbnail={thumbnail}
+                                description={description}
+                            />
+                        )
+                    )}
                     {data?.total > 10 && <Pagination totalPage={data?.total || 0} />}
                 </>
             ) : (
