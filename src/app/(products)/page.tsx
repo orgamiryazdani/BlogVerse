@@ -1,8 +1,8 @@
 'use client'
 import { Suspense } from 'react'
-import { Products } from './_components/products'
-import { Loading } from './_components/loading'
-import { FilterBar } from './_components/filter-bar'
+import { Products } from '../_components/products'
+import { Loading } from '../_components/loading'
+import { FilterBar } from '../_components/filter-bar'
 
 export default function Home() {
     return (
