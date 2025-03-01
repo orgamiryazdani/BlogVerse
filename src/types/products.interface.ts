@@ -4,6 +4,16 @@ export interface Products {
         title: string
         description: string
         thumbnail: string
+        discountPercentage: number
+        price: number
+        rating: number
+        reviews: {
+            rating: number
+            comment: string
+            date: string
+            reviewerName: string
+            reviewerEmail: string
+        }[]
     }[]
     limit: number
     skip: number
