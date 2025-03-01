@@ -24,6 +24,7 @@ export const Products: React.FC = () => {
                     {data?.products.map(({ id, title, thumbnail, description }) => (
                         <ProductsCard
                             key={id}
+                            id={id}
                             title={title}
                             thumbnail={thumbnail}
                             description={description}
