@@ -1,0 +1,44 @@
+'use client'
+import Image from 'next/image'
+import { useState } from 'react'
+
+export const Slider: React.FC<{ images: string[]; title: string }> = ({ images, title }) => {
+    const [currentIndex, setCurrentIndex] = useState(0)
+
+    const goToSlide = (index: number) => {
+        setCurrentIndex(index)
+    }
+
+    return (
+        <div className="min-w-[420px] h-[76vh] flex flex-col items-center mt-5">
+            <Image
+                width={300}
+                height={300}
+                className="w-full h-[350px] object-contain "
+                alt={title}
+                src={images[currentIndex]}
+            />
+            <div className="flex justify-between items-center w-full">
+                {images.map((img, index) => (
+                    <div
+                        key={img}
+                        className="w-32 h-32 relative cursor-pointer"
+                        onClick={() => goToSlide(index)}
+                    >
+                        <div
+                            className={`w-full h-full absolute rounded-lg ${currentIndex === index ? '' : 'bg-gray-700/60'}`}
+                        ></div>
+                        <Image
+                            width={100}
+                            height={100}
+                            className="w-full h-full object-contain border rounded-lg border-gray-500"
+                            alt={title + img}
+                            loading="lazy"
+                            src={img}
+                        />
+                    </div>
+                ))}
+            </div>
+        </div>
+    )
+}
