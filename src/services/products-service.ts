@@ -1,5 +1,5 @@
 import { readData } from '@/core/http-service'
-import { Products, ProductsQueryValue } from '@/types/products.interface'
+import { Product, Products, ProductsQueryValue } from '@/types/products.interface'
 
 export const getProductsApi = async ({ search, skip, sortBy, order, category }: ProductsQueryValue) => {
     const query = category
@@ -10,4 +10,8 @@ export const getProductsApi = async ({ search, skip, sortBy, order, category }: 
 
 export const getProductsCategoryListApi = async () => {
     return await readData<string[]>('/products/category-List')
+}
+
+export const getSingleProductsApi = async (id: number) => {
+    return await readData<Product>(`/products/${id}`)
 }
