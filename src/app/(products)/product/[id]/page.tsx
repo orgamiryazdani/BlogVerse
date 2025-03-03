@@ -3,6 +3,9 @@ import { Slider } from '../_components/slider'
 import { FaDollarSign } from 'react-icons/fa6'
 import { Rating } from '@/app/_components/rating/rating'
 import Image from 'next/image'
+import { Comments } from '../_components/comments'
+import { ProductDimensions } from '../_components/product-dimensions'
+import { ProductInfo } from '../_components/product-info'
 
 const Product = async ({ params }: { params: Promise<{ id: string }> }) => {
     const id = Number((await params).id)
@@ -18,6 +21,7 @@ const Product = async ({ params }: { params: Promise<{ id: string }> }) => {
         brand,
         weight,
         dimensions,
+        reviews,
         warrantyInformation,
         shippingInformation,
         availabilityStatus,
@@ -26,119 +30,76 @@ const Product = async ({ params }: { params: Promise<{ id: string }> }) => {
         meta,
     } = await getSingleProductsApi(id)
 
-    const DimensionsInfo = [
-        {
-            id: 1,
-            title: 'Width :',
-            value: dimensions.width,
-        },
-        {
-            id: 2,
-            title: 'Height :',
-            value: dimensions.height,
-        },
-        {
-            id: 3,
-            title: 'Depth :',
-            value: dimensions.depth,
-        },
-    ]
-
-    const ProductInfo = [
-        {
-            id: 1,
-            title: 'Stock :',
-            value: stock,
-        },
-        {
-            id: 2,
-            title: 'Brand :',
-            value: brand,
-        },
-        {
-            id: 3,
-            title: 'Weight :',
-            value: weight,
-        },
-        {
-            id: 4,
-            title: 'Minimum Order Quantity :',
-            value: minimumOrderQuantity,
-        },
-    ]
-
     return (
-        <article className="flex xl:flex-row flex-col gap-x-5">
-            <Slider images={images} title={title} />
-            <div className="flex flex-col px-3">
-                <header className="mt-5 w-full flex flex-col gap-y-1">
-                    <h1 className="text-xl font-bold">{title}</h1>
-                    <p>{description}</p>
-                </header>
-                <div className="flex md:flex-row flex-col md:items-end justify-between mt-5">
-                    <div className="flex flex-col gap-y-3">
-                        <Rating rate={rating} />
-                        <ul className="flex gap-x-3">
-                            {tags.map((tag) => (
-                                <li key={tag} className="bg-gray-500/20 px-4 py-2 rounded-md">
-                                    # {tag}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <h2 className="flex items-center text-emerald-500 text-2xl mt-4 md:mt-0">
-                        {price} <FaDollarSign />
-                        <span className="text-xs mb-4 ml-[2px] text-red-500">{discountPercentage}% OFF</span>
-                    </h2>
-                </div>
-                <div className="flex md:flex-row flex-col">
-                    <dl className="flex flex-col h-[305px] md:w-1/2 w-full justify-between pt-5">
-                        {ProductInfo.map(({ id, title, value }) => (
-                            <div key={id} className="flex items-center gap-x-2">
-                                <dt className="font-bold text-emerald-500 text-xl">{title}</dt>
-                                <dd className="text-base font-medium text-gray-100">{value}</dd>
-                            </div>
-                        ))}
-                        <div className="flex flex-col bg-gray-700 p-1 px-4 rounded-md">
-                            <span className="w-full text-center text-gray-300 font-bold text-xl">
-                                Dimensions
-                            </span>
-                            <div className="flex justify-between">
-                                {DimensionsInfo.map(({ id, title, value }) => (
-                                    <div key={id} className="flex items-center gap-x-1">
-                                        <dt className="font-bold text-emerald-500 md:text-base text-sm">
-                                            {title}
-                                        </dt>
-                                        <dd className="md:text-sm text-xs font-medium text-gray-100">
-                                            {value}
-                                        </dd>
-                                    </div>
-                                ))}
-                            </div>
+        <>
+            <article className="flex xl:flex-row flex-col gap-x-5">
+                <Slider images={images} title={title} />
+                <div className="flex flex-col px-3 lg:px-0">
+                    <header className="mt-5 w-full flex flex-col gap-y-1">
+                        <h1 className="text-xl font-bold">{title}</h1>
+                        <p>{description}</p>
+                    </header>
+                    <div className="flex md:flex-row flex-col md:items-end justify-between mt-5">
+                        <div className="flex flex-col gap-y-3">
+                            <Rating rate={rating} />
+                            <Tags tags={tags} />
                         </div>
-                    </dl>
-                    <aside className="flex flex-col md:w-1/2 w-full md:h-[308px] gap-y-5 md:gap-y-0 justify-between md:items-end items-center pt-8">
-                        <div className="w-full flex flex-wrap gap-5">
-                            {[warrantyInformation, shippingInformation, availabilityStatus, returnPolicy].map(
-                                (info, index) => (
+                        <h2 className="flex items-center text-emerald-500 text-2xl mt-4 md:mt-0">
+                            {price} <FaDollarSign />
+                            <span className="text-xs mb-4 ml-[2px] text-red-500">
+                                {discountPercentage}% OFF
+                            </span>
+                        </h2>
+                    </div>
+                    <div className="flex md:flex-row flex-col">
+                        <dl className="flex flex-col h-[305px] md:w-1/2 w-full justify-between pt-5">
+                            <ProductInfo
+                                brand={brand}
+                                minimumOrderQuantity={minimumOrderQuantity}
+                                stock={stock}
+                                weight={weight}
+                            />
+                            <ProductDimensions dimensions={dimensions} />
+                        </dl>
+                        <aside className="flex flex-col md:w-1/2 w-full md:h-[308px] gap-y-5 md:gap-y-0 justify-between md:items-end items-center pt-8">
+                            <div className="w-full flex flex-wrap gap-5">
+                                {[
+                                    warrantyInformation,
+                                    shippingInformation,
+                                    availabilityStatus,
+                                    returnPolicy,
+                                ].map((info, index) => (
                                     <span
                                         key={index}
                                         className="bg-gray-500/20 px-4 py-2 rounded-md w-fit font-bold"
                                     >
                                         {info}
                                     </span>
-                                )
-                            )}
-                        </div>
-                        <figure className="flex flex-col items-center">
-                            <Image width={100} height={100} alt="barcode" src={meta.qrCode} />
-                            <figcaption>{meta.barcode}</figcaption>
-                        </figure>
-                    </aside>
+                                ))}
+                            </div>
+                            <figure className="flex flex-col items-center">
+                                <Image width={100} height={100} alt="barcode" src={meta.qrCode} />
+                                <figcaption>{meta.barcode}</figcaption>
+                            </figure>
+                        </aside>
+                    </div>
                 </div>
-            </div>
-        </article>
+            </article>
+            <Comments reviews={reviews} />
+        </>
     )
 }
 
 export default Product
+
+const Tags: React.FC<{ tags: string[] }> = ({ tags }) => {
+    return (
+        <ul className="flex gap-x-3">
+            {tags.map((tag) => (
+                <li key={tag} className="bg-gray-500/20 px-4 py-2 rounded-md">
+                    # {tag}
+                </li>
+            ))}
+        </ul>
+    )
+}
