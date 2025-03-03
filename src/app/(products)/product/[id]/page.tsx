@@ -27,14 +27,14 @@ const Product = async ({ params }: { params: Promise<{ id: string }> }) => {
     } = await getSingleProductsApi(id)
 
     return (
-        <article className="flex gap-x-5">
+        <article className="flex xl:flex-row flex-col gap-x-5">
             <Slider images={images} title={title} />
-            <div className="flex flex-col">
+            <div className="flex flex-col px-3">
                 <header className="mt-5 w-full flex flex-col gap-y-1">
                     <h1 className="text-xl font-bold">{title}</h1>
                     <p>{description}</p>
                 </header>
-                <div className="flex items-end justify-between mt-5">
+                <div className="flex md:flex-row flex-col md:items-end justify-between mt-5">
                     <div className="flex flex-col gap-y-3">
                         <Rating rate={rating} />
                         <ul className="flex gap-x-3">
@@ -45,13 +45,13 @@ const Product = async ({ params }: { params: Promise<{ id: string }> }) => {
                             ))}
                         </ul>
                     </div>
-                    <h2 className="flex items-center text-emerald-500 text-2xl">
+                    <h2 className="flex items-center text-emerald-500 text-2xl mt-4 md:mt-0">
                         {price} <FaDollarSign />
                         <span className="text-xs mb-4 ml-[2px] text-red-500">{discountPercentage}% OFF</span>
                     </h2>
                 </div>
-                <div className="flex">
-                    <dl className="flex flex-col h-[305px] w-1/2 justify-between pt-5">
+                <div className="flex md:flex-row flex-col">
+                    <dl className="flex flex-col h-[305px] md:w-1/2 w-full justify-between pt-5">
                         <div className="flex items-center gap-x-2">
                             <dt className="font-bold text-emerald-500 text-xl">Stock :</dt>
                             <dd className="text-base font-medium text-gray-100">{stock}</dd>
@@ -74,27 +74,33 @@ const Product = async ({ params }: { params: Promise<{ id: string }> }) => {
                             </span>
                             <div className="flex justify-between">
                                 <div className="flex items-center gap-x-1">
-                                    <dt className="font-bold text-emerald-500 text-lg">Width :</dt>
-                                    <dd className="text-base font-medium text-gray-100">
+                                    <dt className="font-bold text-emerald-500 md:text-base text-sm">
+                                        Width :
+                                    </dt>
+                                    <dd className="md:text-sm text-xs font-medium text-gray-100">
                                         {dimensions.width}
                                     </dd>
                                 </div>
                                 <div className="flex items-center gap-x-1">
-                                    <dt className="font-bold text-emerald-500 text-lg">Height :</dt>
-                                    <dd className="text-base font-medium text-gray-100">
+                                    <dt className="font-bold text-emerald-500 md:text-base text-sm">
+                                        Height :
+                                    </dt>
+                                    <dd className="md:text-sm text-xs font-medium text-gray-100">
                                         {dimensions.height}
                                     </dd>
                                 </div>
                                 <div className="flex items-center gap-x-1">
-                                    <dt className="font-bold text-emerald-500 text-lg">Depth :</dt>
-                                    <dd className="text-base font-medium text-gray-100">
+                                    <dt className="font-bold text-emerald-500 md:text-base text-sm">
+                                        Depth :
+                                    </dt>
+                                    <dd className="md:text-sm text-xs font-medium text-gray-100">
                                         {dimensions.depth}
                                     </dd>
                                 </div>
                             </div>
                         </div>
                     </dl>
-                    <aside className="flex flex-col w-1/2 h-[308px] justify-between items-end pt-8">
+                    <aside className="flex flex-col md:w-1/2 w-full md:h-[308px] gap-y-5 md:gap-y-0 justify-between md:items-end items-center pt-8">
                         <div className="w-full flex flex-wrap gap-5">
                             {[warrantyInformation, shippingInformation, availabilityStatus, returnPolicy].map(
                                 (info, index) => (
