@@ -14,11 +14,11 @@ export const Slider: React.FC<{ images: string[]; title: string }> = ({ images, 
             <Image
                 width={300}
                 height={300}
-                className="w-full h-[350px] object-contain "
+                className="w-full h-[350px] object-contain"
                 alt={title}
                 src={images[currentIndex]}
             />
-            <div className="flex justify-between items-center w-full">
+            <div className="flex justify-between items-center w-full overflow-x-auto gap-x-4">
                 {images.map((img, index) => (
                     <div
                         key={img}
@@ -26,7 +26,7 @@ export const Slider: React.FC<{ images: string[]; title: string }> = ({ images, 
                         onClick={() => goToSlide(index)}
                     >
                         <div
-                            className={`w-full h-full absolute rounded-lg ${currentIndex === index ? '' : 'bg-gray-700/60'}`}
+                            className={`min-w-full h-full absolute rounded-lg ${currentIndex === index ? '' : 'bg-gray-700/60'}`}
                         ></div>
                         <Image
                             width={100}
