@@ -28,7 +28,7 @@ export type ProductsQueryValue = {
     category: string
 }
 
-interface Review {
+export interface Review {
     rating: number
     comment: string
     date: string
@@ -36,7 +36,7 @@ interface Review {
     reviewerEmail: string
 }
 
-interface Dimensions {
+export interface Dimensions {
     width: number
     height: number
     depth: number
