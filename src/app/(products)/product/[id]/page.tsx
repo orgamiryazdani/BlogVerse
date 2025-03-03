@@ -26,6 +26,47 @@ const Product = async ({ params }: { params: Promise<{ id: string }> }) => {
         meta,
     } = await getSingleProductsApi(id)
 
+    const DimensionsInfo = [
+        {
+            id: 1,
+            title: 'Width :',
+            value: dimensions.width,
+        },
+        {
+            id: 2,
+            title: 'Height :',
+            value: dimensions.height,
+        },
+        {
+            id: 3,
+            title: 'Depth :',
+            value: dimensions.depth,
+        },
+    ]
+
+    const ProductInfo = [
+        {
+            id: 1,
+            title: 'Stock :',
+            value: stock,
+        },
+        {
+            id: 2,
+            title: 'Brand :',
+            value: brand,
+        },
+        {
+            id: 3,
+            title: 'Weight :',
+            value: weight,
+        },
+        {
+            id: 4,
+            title: 'Minimum Order Quantity :',
+            value: minimumOrderQuantity,
+        },
+    ]
+
     return (
         <article className="flex xl:flex-row flex-col gap-x-5">
             <Slider images={images} title={title} />
@@ -52,51 +93,27 @@ const Product = async ({ params }: { params: Promise<{ id: string }> }) => {
                 </div>
                 <div className="flex md:flex-row flex-col">
                     <dl className="flex flex-col h-[305px] md:w-1/2 w-full justify-between pt-5">
-                        <div className="flex items-center gap-x-2">
-                            <dt className="font-bold text-emerald-500 text-xl">Stock :</dt>
-                            <dd className="text-base font-medium text-gray-100">{stock}</dd>
-                        </div>
-                        <div className="flex items-center gap-x-2">
-                            <dt className="font-bold text-emerald-500 text-xl">Brand :</dt>
-                            <dd className="text-base font-medium text-gray-100">{brand}</dd>
-                        </div>
-                        <div className="flex items-center gap-x-2">
-                            <dt className="font-bold text-emerald-500 text-xl">Weight :</dt>
-                            <dd className="text-base font-medium text-gray-100">{weight}</dd>
-                        </div>
-                        <div className="flex items-center gap-x-2">
-                            <dt className="font-bold text-emerald-500 text-xl">Minimum Order Quantity :</dt>
-                            <dd className="text-base font-medium text-gray-100">{minimumOrderQuantity}</dd>
-                        </div>
+                        {ProductInfo.map(({ id, title, value }) => (
+                            <div key={id} className="flex items-center gap-x-2">
+                                <dt className="font-bold text-emerald-500 text-xl">{title}</dt>
+                                <dd className="text-base font-medium text-gray-100">{value}</dd>
+                            </div>
+                        ))}
                         <div className="flex flex-col bg-gray-700 p-1 px-4 rounded-md">
                             <span className="w-full text-center text-gray-300 font-bold text-xl">
                                 Dimensions
                             </span>
                             <div className="flex justify-between">
-                                <div className="flex items-center gap-x-1">
-                                    <dt className="font-bold text-emerald-500 md:text-base text-sm">
-                                        Width :
-                                    </dt>
-                                    <dd className="md:text-sm text-xs font-medium text-gray-100">
-                                        {dimensions.width}
-                                    </dd>
-                                </div>
-                                <div className="flex items-center gap-x-1">
-                                    <dt className="font-bold text-emerald-500 md:text-base text-sm">
-                                        Height :
-                                    </dt>
-                                    <dd className="md:text-sm text-xs font-medium text-gray-100">
-                                        {dimensions.height}
-                                    </dd>
-                                </div>
-                                <div className="flex items-center gap-x-1">
-                                    <dt className="font-bold text-emerald-500 md:text-base text-sm">
-                                        Depth :
-                                    </dt>
-                                    <dd className="md:text-sm text-xs font-medium text-gray-100">
-                                        {dimensions.depth}
-                                    </dd>
-                                </div>
+                                {DimensionsInfo.map(({ id, title, value }) => (
+                                    <div key={id} className="flex items-center gap-x-1">
+                                        <dt className="font-bold text-emerald-500 md:text-base text-sm">
+                                            {title}
+                                        </dt>
+                                        <dd className="md:text-sm text-xs font-medium text-gray-100">
+                                            {value}
+                                        </dd>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </dl>
