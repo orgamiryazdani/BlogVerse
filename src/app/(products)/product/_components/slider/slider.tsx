@@ -10,7 +10,7 @@ export const Slider: React.FC<{ images: string[]; title: string }> = ({ images, 
     }
 
     return (
-        <div className="xl:w-[420px] w-full px-5 h-[481px] flex flex-col items-center mt-5">
+        <div className="xl:w-[420px] w-full px-5 lg:px-0 h-[481px] flex flex-col items-center mt-5">
             <Image
                 width={300}
                 height={300}
