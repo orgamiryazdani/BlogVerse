@@ -22,16 +22,16 @@ export const Slider: React.FC<{ images: string[]; title: string }> = ({ images, 
                 {images.map((img, index) => (
                     <div
                         key={img}
-                        className="w-32 h-32 relative cursor-pointer"
+                        className="min-w-32 h-32 relative cursor-pointer"
                         onClick={() => goToSlide(index)}
                     >
                         <div
-                            className={`min-w-full h-full absolute rounded-lg ${currentIndex === index ? '' : 'bg-gray-700/60'}`}
+                            className={`w-full h-full absolute rounded-lg ${currentIndex === index ? '' : 'bg-gray-700/60'}`}
                         ></div>
                         <Image
+                            className="w-full h-full object-contain border rounded-lg border-gray-500"
                             width={100}
                             height={100}
-                            className="w-full h-full object-contain border rounded-lg border-gray-500"
                             alt={title + img}
                             loading="lazy"
                             src={img}
