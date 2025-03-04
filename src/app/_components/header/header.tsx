@@ -1,6 +1,7 @@
 'use client'
 import truncateText from '@/utils/truncateText'
 import { useSession } from 'next-auth/react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export const Header: React.FC = () => {
@@ -14,7 +15,13 @@ export const Header: React.FC = () => {
                 {data ? (
                     // user profile
                     <Link href="/profile" className="flex items-center justify-center gap-x-2">
-                        <img src={data?.user.image} alt={data?.user.email} className="md:w-12 w-10" />
+                        <Image
+                            width={100}
+                            height={100}
+                            src={data?.user.image || ''}
+                            alt={data?.user.email}
+                            className="md:w-12 w-10"
+                        />
                         <div className="flex flex-col md:text-sm text-[11px] pt-1">
                             <span>{data?.user.firstName}</span>
                             <span>{truncateText(data?.user.email, 15)}</span>
