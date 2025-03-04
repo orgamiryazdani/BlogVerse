@@ -6,8 +6,26 @@ import Image from 'next/image'
 import { Comments } from '../_components/comments'
 import { ProductDimensions } from '../_components/product-dimensions'
 import { ProductInfo } from '../_components/product-info'
+import { Metadata } from 'next'
 
-const Product = async ({ params }: { params: Promise<{ id: string }> }) => {
+type Props = {
+    params: Promise<{ id: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const id = Number((await params).id) || 1
+    const { title, description } = await getSingleProductsApi(id)
+    return {
+        metadataBase: new URL(`https://blog-verse-a.vercel.app`),
+        title: title,
+        description: description,
+        alternates: {
+            canonical: `/product/${id}`,
+        },
+    }
+}
+
+const Product = async ({ params }: Props) => {
     const id = Number((await params).id)
     const {
         title,
