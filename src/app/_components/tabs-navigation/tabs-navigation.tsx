@@ -5,9 +5,8 @@ import { usePathname } from 'next/navigation'
 
 const menuItems = [
     { id: 1, name: 'Products', to: '/' },
-    { id: 2, name: 'Posts', to: '/posts' },
-    { id: 3, name: 'Recipes', to: '/recipes' },
-    { id: 4, name: 'Users', to: '/users' },
+    { id: 2, name: 'Recipes', to: '/recipes' },
+    { id: 3, name: 'Profile', to: '/profile' },
 ]
 
 export const TabsNavigation: React.FC = () => {
