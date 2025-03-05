@@ -49,7 +49,7 @@ export const LoginForm: React.FC = () => {
     return (
         <form
             onSubmit={handleSubmit(onSubmit)}
-            className="w-96 h-72 flex flex-col items-center justify-between px-5 md:px-0"
+            className="md:w-96 w-full h-72 flex flex-col items-center justify-between px-5 md:px-0"
         >
             <Input<LoginUserModel>
                 label="username"
