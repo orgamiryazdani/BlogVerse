@@ -10,6 +10,7 @@ export const Filter: React.FC = () => {
 
     const filterHandler = (value: string) => {
         addQueryParam('category', value)
+        addQueryParam('skip', '0')
     }
 
     if (isLoading) return <CategoryPlaceholder />
