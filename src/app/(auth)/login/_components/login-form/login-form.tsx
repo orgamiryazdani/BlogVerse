@@ -8,6 +8,8 @@ import { logInAction } from '@/actions/auth'
 import { useActionState, useEffect, useTransition } from 'react'
 import { OperationResult } from '@/types/operation-result'
 import toast from 'react-hot-toast'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 const schema = yup.object({
     username: yup.string().required('Username is required'),
@@ -20,6 +22,9 @@ export const LoginForm: React.FC = () => {
         handleSubmit,
         formState: { errors },
     } = useForm<LoginUserModel>({ resolver: yupResolver(schema) })
+    const router = useRouter()
+    const [isPending, startTransition] = useTransition()
+    const { update } = useSession()
 
     const [formState, action] = useActionState(
         async (_: OperationResult<string> | null, formData: FormData) => {
@@ -34,10 +39,10 @@ export const LoginForm: React.FC = () => {
             toast.error(formState.error.message!)
         } else if (formState && formState.isSuccess) {
             toast.success('welcome')
+            router.push('/')
+            update()
         }
     }, [formState])
-
-    const [isPending, startTransition] = useTransition()
 
     const onSubmit = async (data: LoginUserModel) => {
         const formData = new FormData()
