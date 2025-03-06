@@ -29,3 +29,8 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+.profile-header-bg {
+    background: rgb(34, 193, 195);
+    background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(45, 96, 253, 1) 100%);
+}
