@@ -16,7 +16,11 @@ export const queryClient = new QueryClient({
     }),
     mutationCache: new MutationCache({
         onError: (error: unknown) => {
-            toast.error(error as Problem)
+            if (isProblem(error)) {
+                toast.error(error.message as string)
+            } else {
+                toast.error('خطایی رخ داد')
+            }
         },
     }),
 
