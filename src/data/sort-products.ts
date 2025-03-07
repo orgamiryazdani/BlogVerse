@@ -1,4 +1,4 @@
-export const sortOptions = [
+export const sortProductsOptions = [
     { value: 'id', label: 'ID' },
     { value: 'title', label: 'Title' },
     { value: 'description', label: 'Description' },
@@ -18,9 +18,4 @@ export const sortOptions = [
     { value: 'reviews', label: 'Reviews' },
     { value: 'returnPolicy', label: 'Return Policy' },
     { value: 'minimumOrderQuantity', label: 'Minimum Order Quantity' },
-]
-
-export const orderOptions = [
-    { value: 'asc', label: 'ascending' },
-    { value: 'desc', label: 'Descending' },
 ]

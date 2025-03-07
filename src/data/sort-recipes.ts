@@ -1,0 +1,18 @@
+export const sortRecipesOptions = [
+    { value: 'id', label: 'ID' },
+    { value: 'name', label: 'Name' },
+    { value: 'image', label: 'Image' },
+    { value: 'ingredients', label: 'Ingredients' },
+    { value: 'instructions', label: 'Instructions' },
+    { value: 'prepTimeMinutes', label: 'Prep Time Minutes' },
+    { value: 'cookTimeMinutes', label: 'Cook Time Minutes' },
+    { value: 'servings', label: 'Servings' },
+    { value: 'difficulty', label: 'Difficulty' },
+    { value: 'cuisine', label: 'Cuisine' },
+    { value: 'caloriesPerServing', label: 'Calories Per Serving' },
+    { value: 'tags', label: 'Tags' },
+    { value: 'userId', label: 'Author' },
+    { value: 'rating', label: 'Rating' },
+    { value: 'reviewCount', label: 'Review Count' },
+    { value: 'mealType', label: 'Meal Type' },
+]
