@@ -6,6 +6,12 @@ import { Toaster } from 'react-hot-toast'
 import AuthProvider from '@/providers/auth-provider'
 import { TabsNavigation } from './_components/tabs-navigation'
 import QueryProvider from '@/providers/react-query-provider'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+    title: 'BlogVerse | product and Recipes',
+    description: 'Ability to view products, recipes, users, and related posts',
+}
 
 const figtree = Figtree({
     display: 'swap',
