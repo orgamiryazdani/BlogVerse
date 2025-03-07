@@ -1,8 +1,8 @@
 import useQueryParam from '@/hooks/use-query-param'
-import { orderOptions, sortOptions } from '@/data/sort'
 import { ClearFilterSort } from './clear-filter-sort'
+import { orderOptions } from '@/data/order'
 
-export const Sort: React.FC = () => {
+export const Sort: React.FC<{ sortOptions: { value: string; label: string }[] }> = ({ sortOptions }) => {
     const { addQueryParam, searchParams } = useQueryParam()
     const sortSelected = searchParams.get('sortBy') || ''
     const orderSelected = searchParams.get('order') || ''

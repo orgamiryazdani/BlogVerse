@@ -1,10 +1,14 @@
+'use client'
 import { useState } from 'react'
 import Search from './serach'
 import { GiSettingsKnobs } from 'react-icons/gi'
 import { Sort } from './sort'
 import { Filter } from './filter'
 
-export const FilterBar: React.FC = () => {
+export const FilterBar: React.FC<{
+    sortOptions: { value: string; label: string }[]
+    filterData: string[]
+}> = ({ sortOptions, filterData }) => {
     const [showFilter, setShowFilter] = useState(false)
     return (
         <>
@@ -24,8 +28,8 @@ export const FilterBar: React.FC = () => {
                 className={`md:w-[30%] w-full md:h-[490px] ${showFilter ? 'h-auto pt-[5px] pb-2' : 'h-0'} fixed left-0 right-0 bottom-0 md:rounded-md rounded-t-lg md:bg-gray-700/50 bg-gray-700 md:mt-5 px-[7px] md:pt-[5px] md:sticky md:top-4`}
             >
                 <Search />
-                <Filter />
-                <Sort />
+                <Filter filterData={filterData} />
+                <Sort sortOptions={sortOptions} />
             </div>
         </>
     )

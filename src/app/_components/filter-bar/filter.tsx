@@ -1,19 +1,17 @@
-import { useGetProductsCategoryList } from '@/hooks/use-products'
 import useQueryParam from '@/hooks/use-query-param'
-import { CategoryPlaceholder } from '../placeholders/category'
 import { ClearFilterSort } from './clear-filter-sort'
+import { usePathname } from 'next/navigation'
 
-export const Filter: React.FC = () => {
-    const { data, isLoading } = useGetProductsCategoryList()
+export const Filter: React.FC<{ filterData: string[] }> = ({ filterData }) => {
     const { addQueryParam, searchParams } = useQueryParam()
-    const selectedValue = searchParams.get('category') || ''
+    const pathname = usePathname()
+    const splitPathname = pathname.split('/') || 'category'
+    const selectedValue = searchParams.get(splitPathname[1].length > 0 ? splitPathname[1] : 'category') || ''
 
     const filterHandler = (value: string) => {
-        addQueryParam('category', value)
+        addQueryParam(splitPathname[1] || 'category', value)
         addQueryParam('skip', '0')
     }
-
-    if (isLoading) return <CategoryPlaceholder />
 
     return (
         <section className="w-full mt-3">
@@ -21,7 +19,7 @@ export const Filter: React.FC = () => {
                 Filter by category
             </span>
             <div className="w-full h-32 overflow-y-auto flex flex-wrap gap-2 pt-1">
-                {data?.map((item) => (
+                {filterData?.map((item) => (
                     <span
                         key={item}
                         onClick={() => filterHandler(item)}
