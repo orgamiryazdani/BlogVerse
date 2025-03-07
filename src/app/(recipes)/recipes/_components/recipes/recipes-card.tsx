@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import { RecipesCardProps } from './recipes.types'
 import Image from 'next/image'
-import { TfiCommentAlt } from 'react-icons/tfi'
 import { Rating } from '@/app/_components/rating/rating'
 import { MdDeliveryDining } from 'react-icons/md'
 import { PiCookingPotFill } from 'react-icons/pi'
 import truncateText from '@/utils/truncateText'
+import { GoEye } from 'react-icons/go'
 
 const RecipesCard: React.FC<RecipesCardProps> = ({
     id,
@@ -47,7 +47,7 @@ const RecipesCard: React.FC<RecipesCardProps> = ({
                 <div className="flex items-center gap-x-2">
                     <Rating rate={rating} />
                     <span className="flex items-center gap-x-1 text-sm mt-1">
-                        <TfiCommentAlt /> {reviewCount}
+                        <GoEye /> {reviewCount}
                     </span>
                 </div>
             </div>

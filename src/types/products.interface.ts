@@ -73,3 +73,18 @@ export interface Product {
     thumbnail: string
     images: string[]
 }
+
+export interface Recipe {
+    name: string
+    ingredients: string[]
+    instructions: string[]
+    prepTimeMinutes: number
+    cookTimeMinutes: number
+    difficulty: 'Easy' | 'Medium' | 'Hard'
+    cuisine: string
+    caloriesPerServing: number
+    image: string
+    rating: number
+    reviewCount: number
+    mealType: string[]
+}
