@@ -2,7 +2,10 @@ import useQueryParam from '@/hooks/use-query-param'
 import { ClearFilterSort } from './clear-filter-sort'
 import { usePathname } from 'next/navigation'
 
-export const Filter: React.FC<{ filterData: string[] }> = ({ filterData }) => {
+export const Filter: React.FC<{ filterData: string[]; filterTitle: string }> = ({
+    filterData,
+    filterTitle,
+}) => {
     const { addQueryParam, searchParams } = useQueryParam()
     const pathname = usePathname()
     const splitPathname = pathname.split('/') || 'category'
@@ -16,7 +19,7 @@ export const Filter: React.FC<{ filterData: string[] }> = ({ filterData }) => {
     return (
         <section className="w-full mt-3">
             <span className="w-full mb-1 flex justify-center text-2xl font-bold text-emerald-500">
-                Filter by category
+                Filter by {filterTitle}
             </span>
             <div className="w-full h-32 overflow-y-auto flex flex-wrap gap-2 pt-1">
                 {filterData?.map((item) => (

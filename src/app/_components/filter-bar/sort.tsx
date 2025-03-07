@@ -2,7 +2,10 @@ import useQueryParam from '@/hooks/use-query-param'
 import { ClearFilterSort } from './clear-filter-sort'
 import { orderOptions } from '@/data/order'
 
-export const Sort: React.FC<{ sortOptions: { value: string; label: string }[] }> = ({ sortOptions }) => {
+export const Sort: React.FC<{ sortOptions: { value: string; label: string }[]; sortTitle: string }> = ({
+    sortOptions,
+    sortTitle,
+}) => {
     const { addQueryParam, searchParams } = useQueryParam()
     const sortSelected = searchParams.get('sortBy') || ''
     const orderSelected = searchParams.get('order') || ''
@@ -13,7 +16,9 @@ export const Sort: React.FC<{ sortOptions: { value: string; label: string }[] }>
 
     return (
         <section className="flex flex-col">
-            <span className="mt-2 text-2xl font-bold w-full text-center text-emerald-500">sort products</span>
+            <span className="mt-2 text-2xl font-bold w-full text-center text-emerald-500">
+                Sort {sortTitle}
+            </span>
             <span className="text-xl font-bold">sort by</span>
             <div className="w-full h-auto max-h-28 overflow-y-auto flex flex-wrap gap-2 pt-1">
                 {sortOptions.map(({ value, label }) => (

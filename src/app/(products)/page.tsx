@@ -20,7 +20,12 @@ export default function Home() {
                             <Loading />
                         </div>
                     ) : data !== undefined ? (
-                        <FilterBar sortOptions={sortProductsOptions} filterData={data} />
+                        <FilterBar
+                            sortOptions={sortProductsOptions}
+                            filterData={data}
+                            filterTitle="Category"
+                            sortTitle="Products"
+                        />
                     ) : (
                         <span className="text-xl font-bold text-emerald-300 h-fit mt-5">
                             Category not found !

@@ -19,7 +19,12 @@ const RecipesPage = () => {
                             <Loading />
                         </div>
                     ) : data !== undefined ? (
-                        <FilterBar sortOptions={sortRecipesOptions} filterData={data} />
+                        <FilterBar
+                            sortOptions={sortRecipesOptions}
+                            filterData={data}
+                            filterTitle="Tag"
+                            sortTitle="Recipes"
+                        />
                     ) : (
                         <span className="text-xl font-bold text-emerald-300 h-fit mt-5">
                             Recipes not found !
